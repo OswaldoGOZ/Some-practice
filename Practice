@@ -1,0 +1,103 @@
+
+
+# 1 Escribir un programa que pregunte al usuario su edad y muestre por pantalla si es mayor de edad o no.
+
+from ast import Break, Continue
+from pickle import TRUE
+
+
+edad = int(input ("ingrese su edad\n  "))
+if edad >= 18:
+    print ("eres mayor de edad")
+else:
+    print ("NO eres mayor de edad")
+
+# 2 Escribir un programa que almacene la cadena de caracteres contraseña en una variable, pregunte al usuario por 
+# la contraseña e imprima por pantalla si la contraseña introducida por el usuario coincide con la guardada en la 
+# variable sin tener en cuenta mayúsculas y minúsculas.
+
+clave = "movieka"
+password = (input("Ingrese contraseña\n"))
+passcon = password.lower()
+
+if clave == passcon:
+    print ("CONTRASEÑA CORRECTA")
+else:
+    print ("ACCESO DENEGADO")
+
+# 3- Escribir un programa que pida al usuario dos números y muestre por pantalla su división. 
+# Si el divisor es cero el programa debe mostrar un error.
+
+a = float(input("ingrese numerador\n"))
+b = float(input("ingrese denominador\n"))
+
+if b == 0:
+    print ("ERROR")
+else:
+    c = a / b
+    print ("a/b = " + str(c))
+
+# 4- Escribir un programa que pida al usuario un número entero y muestre por pantalla si es par o impar.
+
+num = int(input("ingrese un número entero: "))
+if num == 0:
+    print ("es cero")
+if num == 1:
+    print ("es 1")
+
+cociente = int(num/2)              # se trabaja con la parte entera, por ejemplo 5/2 = 2
+residuo = int(num - cociente*2)
+
+if (residuo) == 0:
+    print ("ES PAR")
+else:
+    print ("ES IMPAR")
+
+# LA MANERA MÁS FACIL Y CONVENIENTE
+
+if num % 2 == 0:
+    print ("ES PAR")
+else:
+    print ("ES IMPAR CLARO")
+
+# 5- Para tributar un determinado impuesto se debe ser mayor de 16 años y tener unos ingresos 
+# iguales o superiores a 1000 € mensuales. Escribir un programa que pregunte al usuario su edad
+#  y sus ingresos mensuales y muestre por pantalla si el usuario tiene que tributar o no
+
+age = int(input ("ingrese su edad\n===> "))
+income = float(input("escriba sus ingresos\n===> "))
+
+if age > 16 and income >= 1000:
+    print ("USTE DEBE TRIBUTAR")
+else:
+    print ("USTED NO TIENE QUE TRIBUTAR")
+
+# 6- Los alumnos de un curso se han dividido en dos grupos A y B de acuerdo al sexo y el nombre. El grupo A 
+# esta formado por las mujeres con un nombre anterior a la M y los hombres con un nombre posterior a la N y 
+# el grupo B por el resto. Escribir un programa que pregunte al usuario su nombre y sexo, y muestre por pantalla 
+# el grupo que le corresponde.
+
+nombre = (input ("Escriba su nombre\n").lower ())
+
+salir = input('introduce una letra ')
+while salir != 'a':
+    print('La letra no es la que busco que es a')
+    salir = input('introduce una letra ') 
+
+
+entrada = (input("Escriba H o m: "))
+while entrada != "H" or "M":
+    entrada = (input("Escriba H o m: "))
+ 
+    
+if entrada == "M":
+    if nombre[0] == "a" or "b" or "c" or "d" or "e" or "f" or "g" or "h" or "i" or "j" or "k" or "m":
+        print (" mujer, letra anterior a M, GRUPO A")
+    else:
+        print (" mujer, letra posterior a M, GRUPO B")
+if entrada == "H":
+    if nombre[0] != "a" or "b" or "c" or "d" or "e" or "f" or "g" or "h" or "i" or "j" or "k" or "m" or "n":
+        print (" hombre, letra posterior a N, GRUPO A")
+    else:
+        (" hombre, letra anterior a N, GRUPO B")
+
