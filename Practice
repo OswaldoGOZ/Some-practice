@@ -85,7 +85,7 @@ while salir != 'a':
     salir = input('introduce una letra ') 
 
 
-entrada = (input("Escriba H o m: "))
+entrada = (input("Escriba H o m: "))   #THIS PART IS BAD, logic error by !=, review soon
 while entrada != "H" or "M":
     entrada = (input("Escriba H o m: "))
  
