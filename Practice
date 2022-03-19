@@ -242,3 +242,78 @@ while algo != "salir":
     for pos,i in enumerate(algo):
         write = (algo[pos::])
         print (write)
+        
+# 6- Escribir un programa que cree un diccionario vacío y lo vaya llenado con información sobre una persona 
+# (por ejemplo nombre, edad, sexo, teléfono, correo electrónico, etc.) que se le pida al usuario. 
+# Cada vez que se añada un nuevo dato debe imprimirse el contenido del diccionario.
+
+datos_persona = {}
+
+while(1):
+    enter = input("¿desea introducir información, responda \"si\" o \"no\": ")
+    if enter == "si":
+        key = input("¿Qué dato desea agregar: ")
+        datos_persona[key]= input(key + ": ")
+        print(datos_persona)
+        continue
+    else:
+        break
+print("gracias, hasta pronto")
+
+# OTRA FORMA, muy similar pero con una Interesante manera de condicionar un bucle while
+#persona = {}
+#continuar = True
+#while continuar:
+    #clave = input('¿Qué dato quieres introducir? ')
+    #valor = input(clave + ': ')
+    #persona[clave] = valor
+    #print(persona)
+    #continuar = input('¿Quieres añadir más información (Si/No)? ') == "Si"
+
+# 7- Escribir un programa que cree un diccionario simulando una cesta de la compra. 
+# El programa debe preguntar el artículo y su precio y añadir el par al diccionario, hasta que el usuario decida terminar.
+#  Después se debe mostrar por pantalla la lista de la compra y el coste total, con el siguiente formato
+
+# Lista de compra
+# articulo 1       precio
+# articulo 2       precio
+#  ...
+#Total             coste
+
+cesta = {}
+continuar = True
+while continuar:
+    key = input("introduzca el artículo\n")
+    price = input("introduzca el precio de " + key + ": ")
+    cesta[key]= price
+    continuar = input("¿desea agregar otro artículo? responda si o no: ") == "si"
+print ("Lista de compra:")
+Total_art = 0
+costo = 0
+for k in cesta:
+    print ("{0:<14}{1}".format(k,cesta[k]))
+    Total_art += 1
+    costo += float(cesta[k])
+print ("Total: {0:<7}{1}".format(Total_art,costo))
+
+# 8- Escribir un programa que cree un diccionario de traducción español-inglés. El usuario introducirá las palabras en español 
+# e inglés separadas por dos puntos, y cada par <palabra>:<traducción> separados por comas. El programa debe crear 
+# un diccionario con las palabras y sus traducciones. Después pedirá una frase en español y utilizará el diccionario 
+# para traducirla palabra a palabra. Si una palabra no está en el diccionario debe dejarla sin traducir.
+
+diccionario = {}
+palabras = input ("\nintroduzca las palabras en español e inglés separadas por dos puntos, y cada par <palabra>:<traducción> separados por comas\n")
+pares = palabras.split(",")
+
+for i in pares:
+    x = i.find(":")
+    key = i[0:x:]
+    valor =i[x+1::]
+    diccionario[key]= valor
+print (diccionario)
+
+frase = input ("introduzca una frase en español\n")
+
+for k in diccionario:
+    frase = frase.replace(k,diccionario[k])
+print (frase)
