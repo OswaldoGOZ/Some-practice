@@ -430,3 +430,89 @@ for element in listas[1::]:
     Dict_output[Nif] = subdict
 
 print (Dict_output)
+
+# 1 - Escribir una función que muestre por pantalla el saludo ¡Hola amiga! cada vez que se la invoque.
+
+def Salute ():
+    print ("¡Hola amiga!",end="...")
+for i in range (0,4):
+    Salute ()
+print ("\n")
+
+# 2 - Escribir una función a la que se le pase una cadena <nombre> y muestre por pantalla el saludo ¡hola <nombre>!.
+
+def Saluda (nombre):
+    print ("Hola {}".format(nombre))
+Saluda ("Yakary")
+Saluda ("Oliver")
+
+# 3 - Escribir una función que reciba un número entero positivo y devuelva su factorial
+
+def factorializa (number):
+    result = 1
+    for i in range (1,number+1):
+        result = result*i                   # Otra opción sería result*= (i + 1), poniendo el range del for como: range(number)
+    return (result)
+print(factorializa(4)) 
+
+# 4 - Escribir una función que calcule el total de una factura tras aplicarle el IVA. La función debe recibir 
+# la cantidad sin IVA y el porcentaje de IVA a aplicar, y devolver el total de la factura.
+#  Si se invoca la función sin pasarle el porcentaje de IVA, deberá aplicar un 21%
+
+def tax (monto_sin_iva,IVA=21):                     # IVA = 21, es un argumento por defecto para la función. IMPORTANTE SABERLO
+    total = (monto_sin_iva*IVA/100) + monto_sin_iva
+    return total
+print (tax(1000,10))
+print (tax(1000))
+
+# 5 - Escribir una función que calcule el área de un círculo y otra que calcule el volumen de un cilindro usando 
+# la primera función.
+
+def circle_area (radius):
+    a_circle = 3.1416*radius**2
+    return a_circle
+
+def cylinder_volume (long,radius):                #parámetros: long y radius // argumentos: los valores que tomen long y radius
+    volume = round(long*circle_area (radius),2)
+    return volume
+
+print (cylinder_volume (4,3))
+
+# 6 - Escribir una función que reciba una muestra de números en una lista y devuelva su media.
+
+def promedia (*args):      # el * indica que es un "args" o un número de argumentos desconocidos IMPORTANTE
+    total = 0
+    for i in args:
+        total += i
+    media = total/len(args)
+    return media
+
+print (promedia(5,10,20,1))
+
+# Otra manera mas sencilla es usar el métdo sum(args), este totaliza la suma de todos los elementos de la lista
+# sin necesidad de usar el for para sumar, quedando el programa así:     media = sum(arg)/len(arg)
+
+# 7 - Escribir una función que reciba una muestra de números en una lista y devuelva otra lista con sus cuadrados.
+
+def squares (*numbers):
+    lista =[]
+    for i in numbers:
+        lista.append(i**2) 
+    return lista
+
+print (squares(2,4,3,1,5,6))
+
+# 8 - Escribir una función que reciba una muestra de números en una lista y devuelva un diccionario con su media,
+#  varianza y desviación típica.
+
+def stadistics (*number_list):
+    pre_varianza = 0
+    media = sum(number_list)/len(number_list)
+    for i in number_list:
+        pre_varianza += (i-media)**2
+    varianza = pre_varianza/(len(number_list)-1)
+    desv_standar = round(varianza**0.5,2)
+    Estadisticas = {"media":media,"varianza":varianza,"Deviación standar":desv_standar}
+    return Estadisticas
+
+print (stadistics(490,500,510,515,520))
