@@ -516,3 +516,194 @@ def stadistics (*number_list):
     return Estadisticas
 
 print (stadistics(490,500,510,515,520))
+
+# 1 - Escribir una función que muestre por pantalla el saludo ¡Hola amiga! cada vez que se la invoque.
+
+from math import floor
+
+
+def Salute ():
+    print ("¡Hola amiga!",end="...")
+for i in range (0,4):
+    Salute ()
+print ("\n")
+
+# 2 - Escribir una función a la que se le pase una cadena <nombre> y muestre por pantalla el saludo ¡hola <nombre>!.
+
+def Saluda (nombre):
+    print ("Hola {}".format(nombre))
+Saluda ("Yakary")
+Saluda ("Oliver")
+
+# 3 - Escribir una función que reciba un número entero positivo y devuelva su factorial
+
+def factorializa (number):
+    result = 1
+    for i in range (1,number+1):
+        result = result*i                   # Otra opción sería result*= (i + 1), poniendo el range del for como: range(number)
+    return (result)
+print(factorializa(4)) 
+
+# 4 - Escribir una función que calcule el total de una factura tras aplicarle el IVA. La función debe recibir 
+# la cantidad sin IVA y el porcentaje de IVA a aplicar, y devolver el total de la factura.
+#  Si se invoca la función sin pasarle el porcentaje de IVA, deberá aplicar un 21%
+
+def tax (monto_sin_iva,IVA=21):                     # IVA = 21, es un argumento por defecto para la función. IMPORTANTE SABERLO
+    total = (monto_sin_iva*IVA/100) + monto_sin_iva
+    return total
+print (tax(1000,10))
+print (tax(1000))
+
+# 5 - Escribir una función que calcule el área de un círculo y otra que calcule el volumen de un cilindro usando 
+# la primera función.
+
+def circle_area (radius):
+    a_circle = 3.1416*radius**2
+    return a_circle
+
+def cylinder_volume (long,radius):                #parámetros: long y radius // argumentos: los valores que tomen long y radius
+    volume = round(long*circle_area (radius),2)
+    return volume
+
+print (cylinder_volume (4,3))
+
+# 6 - Escribir una función que reciba una muestra de números en una lista y devuelva su media.
+
+def promedia (*args):      # el * indica que es un "args" o un número de argumentos desconocidos IMPORTANTE
+    total = 0
+    for i in args:
+        total += i
+    media = total/len(args)
+    return media
+
+print (promedia(5,10,20,1))
+
+# Otra manera mas sencilla es usar el métdo sum(args), este totaliza la suma de todos los elementos de la lista
+# sin necesidad de usar el for para sumar, quedando el programa así:     media = sum(arg)/len(arg)
+
+# 7 - Escribir una función que reciba una muestra de números en una lista y devuelva otra lista con sus cuadrados.
+
+def squares (*numbers):
+    lista =[]
+    for i in numbers:
+        lista.append(i**2) 
+    return lista
+
+print (squares(2,4,3,1,5,6))
+
+# 8 - Escribir una función que reciba una muestra de números en una lista y devuelva un diccionario con su media,
+#  varianza y desviación típica.
+
+def stadistics (*number_list):
+    pre_varianza = 0
+    media = sum(number_list)/len(number_list)
+    for i in number_list:
+        pre_varianza += (i-media)**2
+    varianza = pre_varianza/(len(number_list)-1)
+    desv_standar = round(varianza**0.5,2)
+    Estadisticas = {"media":media,"varianza":varianza,"Deviación standar":desv_standar}
+    return Estadisticas
+
+print (stadistics(490,500,510,515,520))
+
+# 9 - Escribir una función que calcule el máximo común divisor de dos números y 
+# otra que calcule el mínimo común múltiplo.
+
+def divisores (num):            # Esta función encuentra los divisores al descomponer el número "num"
+    list_divisors = []
+    i = 2
+    while i<= num:
+        if num%i == 0:
+            list_divisors.append(i)
+            num = num/i
+            i = 2
+        else:
+            i += 1
+    return list_divisors
+
+print (divisores(24))
+print (divisores(36))
+
+
+def mcm (num1,num2):                        # funcion para sacar el minimo comun multiplo entre 2 numeros
+    list_def = []                           # En esta lista se pretende queden los comunes y no comunes con su mayor exponente
+    list1 = divisores (num1)                # Se crea una lista 1 con los divisores del numero 1
+    list2 = divisores (num2)                # Y una lista 2 con los divisores para el numero 2
+
+    lista_total = list1 + list2             # se crea una lista total para, a partir de esta, poder comparar lista 1 con lista 2
+    lista_total_def = []                    # a la misma lista total le eliminamos los elementos repetidos para no comparar repetidos
+    for element in lista_total:             # con este ciclo for se eliminan elementos repetidos
+        if element not in lista_total_def:
+            lista_total_def.append(element) # lista definitiva con una sola muestra de cada divisor encontrado 
+
+    for i in lista_total_def:                         # ahora con esta lista definitiva, iteraremos para ver cuantas veces esta en la lista 1 y en la lista 2 (comunes con mayor exponente)
+        veces1 = list1.count(i)
+        veces2 = list2.count(i)
+        if veces1 >= veces2:                           # si esta mas veces en la lista1 se agrega, elevado a i veces (i**veces1)
+            list_def.append(i**veces1)                 # se agrega resultado a list_def
+        if veces2 > veces1:                            # si esta mas veces en lista 2 se procede de la misma manera
+            list_def.append(i**veces2)
+    m_c_m = 1
+    for element in list_def:                           # por ultimo, para sacar el mcm se multiplican los elementos de list_def
+        m_c_m *= element
+    return m_c_m                                       # la función retorna el mcm
+
+print (mcm (24,36))
+
+# 10 - Escribir una función que convierta un número decimal en binario y otra que convierta un número binario en decimal
+
+def par_o_impar (num):
+    if num%2 == 0:
+        num = "par"
+    else:
+        num = "impar"
+    return num
+
+def dec_to_bin (num):
+    list_bin =[]
+    while num>1:
+        rest = par_o_impar (floor(num))
+        if rest == "par":
+            list_bin.append ("0")
+        if rest == "impar":
+            list_bin.append ("1")
+        num /= 2
+    list_bin = list_bin[::-1]                # una de las formas de invertir la lista generada, que se forma alreves, tambien sirve el metodo reversed
+    list_bin = "".join(list_bin)
+    return list_bin
+
+print (dec_to_bin (79))
+print (dec_to_bin (28))
+
+def bin_to_dec (num):                  #Función que transforma de binario a decimal
+    num = str(num)                     # Aqui lo llevé a string para poder iterar en el for, pero tambien sirve llevarlo a una lista
+    result = 0
+    multiple = 1
+    for i in num[::-1]:
+        if i == "1":
+            if result == 0:
+                result += 1
+            else:
+                multiple *= 2
+                result += multiple
+        else:
+            multiple*= 2
+        print (result)
+    return result
+
+print(bin_to_dec(1001111))
+
+# otra manera mejor
+
+def bin_to_dec2 (num):                  #Función que transforma de binario a decimal
+    num = str(num)
+    num = num[::-1]
+    exponent = 0
+    resultado = 0
+    for i in num:
+        resultado += (int(i)*(2**exponent))
+        exponent += 1
+        print (resultado)
+    return resultado
+
+print (bin_to_dec2(1001111))
