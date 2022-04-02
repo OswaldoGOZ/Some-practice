@@ -707,3 +707,28 @@ def bin_to_dec2 (num):                  #Función que transforma de binario a de
     return resultado
 
 print (bin_to_dec2(1001111))
+
+# 11 - Escribir un programa que reciba una cadena de caracteres y devuelva un diccionario con cada palabra 
+# que contiene y su frecuencia. Escribir otra función que reciba el diccionario generado con la función 
+# anterior y devuelva una tupla con la palabra más repetida y su frecuencia.
+
+cadena = input("Ingrese un escrito\n")
+
+def frecuencia_palabras (escrito):          # función que determina la frecuencia de cada palabra en un escrito
+    diccionario = {}                        # se crea el diccionario vacio donde se introducirán las palabras y frecuencia
+    escrito = escrito.replace(".","")       # se eliminan puntos y comas
+    escrito = escrito.replace(",","")
+    word_list = escrito.split(" ")          # se crea una lista con todas las palabras usando el split con espacio: " "
+    for element in word_list:               # para cada palabra en la lista...
+        counter = 0
+        for i in range(len(word_list)):     # se realiza un bucle a travez de cada indice para comparar... 
+            if element == word_list[i]:     # ...si el elemento (palabra) es igual al del indice
+                counter += 1                # por cada vez que coincida se suma 1 al contador
+        diccionario[element] = counter      # luego se crea un elemento del diccionario: key = element, value = counter
+    return diccionario                      # la salida de la función es un diccionario con cada palabra y el número de veces
+    
+print(frecuencia_palabras(cadena))
+
+# la funcion frecuencia_palabras, cuando pasa por alguna palabra repetida vuelve a contarla y sustituye por el nuevo resultado
+# que a fin de cuentas es el mismo, por este motivo no afecta en nada, ya que en el diccionario creado se verá
+# reflejada la palabra una sola vez con la frecuencia correspondiente, producto de la ultima aparcion de la palabra en el escrito
