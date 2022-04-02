@@ -732,3 +732,16 @@ print(frecuencia_palabras(cadena))
 # la funcion frecuencia_palabras, cuando pasa por alguna palabra repetida vuelve a contarla y sustituye por el nuevo resultado
 # que a fin de cuentas es el mismo, por este motivo no afecta en nada, ya que en el diccionario creado se verá
 # reflejada la palabra una sola vez con la frecuencia correspondiente, producto de la ultima aparcion de la palabra en el escrito
+
+def whosemost (diccionario_entrada):
+    keys = diccionario_entrada.keys()
+    mayor = 0
+    for element in keys:
+        if diccionario_entrada[element]>mayor:
+            mayor = diccionario_entrada[element]
+            tupla = (element,mayor)
+        else:
+            tupla = tupla
+    return tupla
+
+print (whosemost(frecuencia_palabras(cadena)))
