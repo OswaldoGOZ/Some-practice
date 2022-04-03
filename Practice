@@ -745,3 +745,5 @@ def whosemost (diccionario_entrada):
     return tupla
 
 print (whosemost(frecuencia_palabras(cadena)))
+
+# this last represents a example where there is a function into another function
