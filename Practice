@@ -749,8 +749,56 @@ print (whosemost(frecuencia_palabras(cadena)))
 # this last represents a example where there is a function into another function
 
 
-Ejercicio 1
-Escribir una función que aplique un descuento a un precio y otra que aplique el IVA a un precio. Escribir una tercera función que reciba un diccionario 
-con los precios y porcentajes de una cesta de la compra, y una de las funciones anteriores, y utilice la función pasada para aplicar los descuentos 
-o el IVA a los productos de la cesta y devolver el precio final de la cesta.
 
+
+# 1 - Escribir una función que aplique un descuento a un precio y otra que aplique el IVA a un precio. 
+# Escribir una tercera función que reciba un diccionario con los precios y porcentajes de una cesta de la compra, 
+# y una de las funciones anteriores, y utilice la función pasada para aplicar los descuentos o el IVA 
+# a los productos de la cesta y devolver el precio final de la cesta.
+
+from math import cos, sin, tan, log, exp
+
+
+def discount (monto,descuento):
+    precio = monto - monto*(descuento/100)
+    return precio
+
+def IVA (monto,impuesto):
+    precio = monto + monto*(impuesto/100)
+    return precio 
+
+def compra (dic_cesta,funcion):
+    precio_final = 0
+    keys = dic_cesta.keys()
+    for element in keys:
+        precio_final += funcion(element,dic_cesta[element])
+    return precio_final
+
+cesta_compra1 = {3000:10,4000:10,2000:10,1000:10}
+cesta_compra2 = {3000:25,4000:25,2000:25,1000:25}
+
+print (compra(cesta_compra1,discount))
+print (compra(cesta_compra2,IVA))
+
+# 2 - Escribir una función que simule una calculadora científica que permita calcular el seno, coseno, tangente,
+#  exponencial y logaritmo neperiano. La función preguntará al usuario el valor y la función a aplicar,
+#  y mostrará por pantalla una tabla con los enteros de 1 al valor introducido y el resultado de aplicar
+#  la función a esos enteros.
+
+def calculator ():
+    funcion = (input("introduce la función a aplicar: sin, cos, tan, exp, log: "))
+    value = (int(input("introduce un valor entero positivo: ")))
+
+    resultados = calculus(funcion,value)
+    keys = resultados.keys()
+    for element in keys:
+        print ("{:<5} {:<5}".format(element,calculus(funcion,value)[element]))
+
+def calculus (funcion,value):
+    functions = {"sin":sin, "cos":cos, "tan":tan, "log":log, "exp":exp}
+    Result ={}
+    for i in range (1,value +1):
+        Result[i] = functions[funcion](i)
+    return Result
+        
+calculator ()
