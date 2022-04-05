@@ -802,3 +802,40 @@ def calculus (funcion,value):
     return Result
         
 calculator ()
+
+# 3 - Escribir una función que reciba otra función y una lista, y devuelva otra lista con el resultado de aplicar
+#  la función dada a cada uno de los elementos de la lista.
+
+def aplica (funcion,lista):
+    new_list =[]
+    for element in lista:
+        new_list.append(funcion(element))
+    return new_list
+
+Precios = [1000,2000,5000,7000,1000,20000]
+
+def discount50percent (value):
+    new_price = value - value*0.5
+    return new_price
+
+print (aplica(discount50percent,Precios))
+
+# 4 - Escribir una función que reciba otra función booleana y una lista, y devuelva otra lista con los
+#  elementos de la lista que devuelvan True al aplicarles la función booleana.
+
+def filtra_trues (funcion_booleana,lista_de_valores):
+    results = []
+    for element in lista_de_valores:
+        if funcion_booleana(element) == True:
+            results.append(element)
+    return results
+
+def EsPar (n):
+    if n % 2 == 0:
+        out = True
+    else:
+        out = False
+    return out
+
+numbers = [1,3,5,6,10,16,22,24,27,30]
+print (filtra_trues(EsPar,numbers))
